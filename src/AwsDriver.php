@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of Flarum.
- *
- * For detailed copyright and license information, please view the
- * LICENSE file that was distributed with this source code.
- */
-
-namespace Flarum\Filesystem;
+namespace VincentDugard\FlarumAws;
 
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter as S3Adapter;
@@ -16,6 +9,7 @@ use Flarum\Foundation\Config;
 use Flarum\Settings\SettingsRepositoryInterface;
 use Illuminate\Contracts\Filesystem\Cloud;
 use League\Flysystem\FilesystemInterface;
+use Flarum\Filesystem\DriverInterface;
 
 class AwsDriver implements DriverInterface
 {
@@ -24,12 +18,12 @@ class AwsDriver implements DriverInterface
         return $this->adapt(new Flysystem(
             new S3Adapter(new S3Client([
                 'credentials' => [
-                    'key'    => $config['azure-config'][$diskName]['key'],
-                    'secret' => $config['azure-config'][$diskName]['secret'],
+                    'key'    => $config['aws-config'][$diskName]['key'],
+                    'secret' => $config['aws-config'][$diskName]['secret'],
                 ],
-                'region' => $config['azure-config'][$diskName]['region'],
+                'region' => $config['aws-config'][$diskName]['region'],
                 'version' => 'latest',
-            ]), $config['azure-config'][$diskName]['bucket'], $config['azure-config'][$diskName]['root'])
+            ]), $config['aws-config'][$diskName]['bucket'], $config['aws-config'][$diskName]['root'])
         ));
     }
 
