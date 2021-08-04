@@ -1,5 +1,5 @@
 {
-  "name": "adrillex/flarum-aws",
+  "name": "vdugard/flarum-aws",
   "description": "Aws Filesystem Extender for Flarum",
   "keywords": [
     "flarum"
@@ -13,7 +13,7 @@
   "authors": [],
   "autoload": {
     "psr-4": {
-      "Adrillex\\FlarumAws\\": "src/"
+      "VincentDugard\\FlarumAws\\": "src/"
     }
   },
   "extra": {
