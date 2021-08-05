@@ -18,12 +18,12 @@ class AwsDriver implements DriverInterface
         return $this->adapt(new Flysystem(
             new S3Adapter(new S3Client([
                 'credentials' => [
-                    'key'    => $config['aws-config'][$diskName]['key'],
-                    'secret' => $config['aws-config'][$diskName]['secret'],
+                    'key'    => $settings->get("flarum-aws.key"),
+                    'secret' => $settings->get("flarum-aws.secret"),
                 ],
-                'region' => $config['aws-config'][$diskName]['region'],
+                'region' => $settings->get("flarum-aws.region"),
                 'version' => 'latest',
-            ]), $config['aws-config'][$diskName]['bucket'], $config['aws-config'][$diskName]['root'])
+            ]), $settings->get("flarum-aws.bucket"), $diskName)
         ));
     }
 
