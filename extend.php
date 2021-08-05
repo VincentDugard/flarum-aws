@@ -5,5 +5,5 @@ namespace VincentDugard\FlarumAws;
 use Flarum\Extend;
 
 return [
-    (new Extend\Filesystem)->driver('flarum-aws', AwsDriver::class)
+    (new Extend\Filesystem)->driver('aws', AwsDriver::class)
 ];
